@@ -9,7 +9,8 @@ const countStudents = (path) => {
 
     // Trim any whitespace and split the content by new lines to get an array of lines
     const students = response.trim().split('\n')
-      .map((student) => student.split(',')); // Split each line by commas to get an array of fields
+      // Split each line by commas to get an array of fields
+      .map((student) => student.split(','));
 
     // Remove the first element of the array, which contains the header
     students.shift();
@@ -21,7 +22,8 @@ const countStudents = (path) => {
     students.forEach((student) => {
       // If the field already exists in the object, push the student's first name into the array
       if (student[3] in fields) fields[student[3]].push(student[0]);
-      else fields[student[3]] = [student[0]]; // Otherwise, create a new array with the student's first name
+      // Otherwise, create a new array with the student's first name
+      else fields[student[3]] = [student[0]];
     });
 
     // Log the total number of students to the console
